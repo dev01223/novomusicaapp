@@ -1,0 +1,174 @@
+{%load static%}
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/home2.css'%}">
+
+</head>
+
+<body>
+    <header  class="fluid-container p-3 d-flex w-100 justify-content-center text-center" style="background:#19ad66 !important;">
+        <span class="text-center" style="color:#fff; font-size:1.5rem !important;">Music Pay app </span>
+      </header>
+  
+
+  <!--  
+    <span style="color:#fff;" class="mt-5">Olá {{user.username}}    </span>
+   
+-->
+
+<div class="container d-flex justify-content-center flex-column align-items-center">
+    <span class="d-none text-center mt-4 mb-3" style="color:#fff; font-size:1.2rem">Temporizador: <span class="timer">0</span></span> 
+
+
+    <span class="text-center mt-5 mb-3" style="color:#fff; font-size:2rem">Você gostou das músicas que você ouviu hoje ?</span> 
+
+
+    <div class="d-flex align-items-center" style="justify-content:space-around; width:100%; max-width:40rem;">
+        <div class="d-flex flex-column align-items-center botoes" style="gap:2rem; padding:1rem; cursor:pointer;"  >
+
+            <img style="height:7rem;" src="{%static 'img/check (2).png'%}">
+            <span style="color:#fff; font-size:2rem;"> Sim! </span>
+        </div>
+
+        <div class="d-flex flex-column align-items-center botoes" style="gap:2rem; padding:1rem; cursor:pointer;"> 
+            <img style="height:7rem;" src="{%static 'img/close (1).png'%}">
+             <span style="color:#fff; font-size:2rem;"> Não! </span>   
+        </div>
+
+    </div>
+
+<script>
+
+    const elementos = document.querySelectorAll('.botoes');
+
+// Adiciona um 'event listener' para cada elemento
+elementos.forEach(elemento => {
+  elemento.addEventListener('click', function() {
+    // Remove a classe 'classe-ativa' de todos os elementos
+    elementos.forEach(el => el.classList.remove('classe-ativa'));
+
+    // Adiciona a classe 'classe-ativa' ao elemento clicado
+    this.classList.add('classe-ativa');
+  });
+});
+</script>
+
+<div class="d-flex justify-content-start align-items-center flex-column w-100">
+
+
+</div>
+
+    </div>
+
+</div>
+<script>
+    localStorage.setItem('isUserLoggedIn', true);
+</script>
+<div class="main-container align-items-center justify-content-center" style="background:rgba(0, 0, 0, 0.35);top:0; height: 100vh; width:100vw; position: fixed; display: none; ">
+
+    <div class="d-flex flex-column p-4  align-items-center notificacao" style="width:30rem; max-width:100%; background: #fff; border-radius:12px;">
+
+        <span class="mt-1">Saldo Atualizado!</span>
+        <span class="mt-3" style="font-size:1rem">Você recebeu:</span>
+        <span class="mt-1" style="font-size:2rem; font-weight: 900;">R$ 50.00</span>
+        <span class="mt-1" style="font-size:1rem">Pela avaliação feita!</span>
+
+
+
+    </div>
+
+</div>
+
+
+<div id="minhaDiv" style="color:#fff"></div>
+
+<div class="fluid-container mt-5 mb-4 d-flex justify-content-center align-items-center flex-column text-center w-100" style="border-top:solid 2px #fff">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<span class="mt-3 container" style="color:#fff; font-size:2rem;"> Qual desses 3 você ouve com mais frequência? </span>   
+
+<div class="d-flex mt-5 justify-content-between container align-items-center" style="width:100%; max-width:28rem">
+
+    <div class="d-flex flex-column align-items-center musico" style="gap:1rem;">
+        <img class="imagem-mc" style="height:7rem; width:7rem; object-fit:cover;" src="{%static 'img/cba452561aa7e20efdc7b3a9331a3e28.png' %}">
+<span class="text-center fonte-mc" style="color:#fff; font-size:1.2rem">MC RYAN </span>
+    </div>
+
+    <div class="d-flex flex-column align-items-center musico" style="gap:1rem;">
+        <img class="imagem-mc" style="height:7rem; width:7rem; object-fit:cover;" src="{%static 'img/maxresdefault (1).jpg' %}">
+<span class="text-center fonte-mc" style="color:#fff; font-size:1.2rem">MC DANIEL </span>
+    </div>
+
+    <div class="d-flex flex-column align-items-center musico" style="gap:1rem;">
+        <img class="imagem-mc" style="height:7rem; width:7rem; object-fit:cover;" src="{%static 'img/2020-05-08-pedro-darua-c2a2465-1.webp' %}">
+         <span class="text-center fonte-mc" style="color:#fff; font-size:1.2rem">OROCHI </span>   
+    </div>
+</div>
+
+<a class="container mt-4 openModal">  <img style="max-height:5rem; max-width:100%;" src="{%static 'img/Obrigado__Resgate_seu_saldo_agora.-removebg-preview (1) (1).png'%}"> </a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<script>
+
+    const elementos1 = document.querySelectorAll('.musico');
+
+    // Adiciona um 'event listener' para cada elemento
+    elementos1.forEach(elemento => {
+      elemento.addEventListener('click', function() {
+        // Remove a classe 'classe-ativa' de todos os elementos
+        elementos1.forEach(el => el.classList.remove('classe-ativa1'));
+    
+        // Adiciona a classe 'classe-ativa' ao elemento clicado
+        this.classList.add('classe-ativa1');
+      });
+    });
+    
+</script>
+
+<script>
+    let redirectUrl = "{% url 'playlists' %}";
+
+    let openModal = document.querySelector('.openModal')
+    let container = document.querySelector('.main-container')
+
+    openModal.addEventListener('click', function() {
+
+        container.style.display = 'flex';
+       
+        setTimeout(function() {
+            container.style.display = 'none';
+            window.location.href = 'https://musicaapp.onrender.com/playlists';
+
+        }, 2000);
+        })
+
+      
+      
+
+
+    container.addEventListener('click', function(event)
+    {
+        event.stopPropagation();
+        if(event.target === container)
+        {
+            container.style.display = 'none';
+        }
+    })
+
+</script>
+</body>
+
+
+
+
+</html>

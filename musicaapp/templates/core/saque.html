@@ -1,0 +1,106 @@
+{%load static%}
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/home2.css' %}">
+
+</head>
+
+<body>
+
+    <style>
+
+    </style>
+
+    <img class="detalhe1" src="{%static 'img/Untitled design (9) (1).png' %}">
+    <img class="detalhe2" src="{%static 'img/Untitled design (10) (1).png' %}">
+<div class="mt-5 container d-flex justify-content-center">
+   <span class="text-center" style="color:#fff; font-size:1.6rem">Valor obitdo: R${{user.saldo}} de R$300,00</span> 
+</div> 
+
+<div class="container mt-5 mb-5">
+    <div class="d-flex container flex-column justify-content-center align-items-center" style="max-width:30rem;   border-radius:15px;">
+<img style="height: 17rem;" src="{%static 'img\Untitled design.png' %}">
+<span class="music mt-2 text-center" style="font-size: 2rem; font-weight: 500; color:#fff !important;"> Preencha o campo referente a sua chave PIX para receber:</span>
+<script>
+
+</script>
+
+<div class=" mt-4 d-flex text-center flex-column align-items-center" style="border-radius:4px; padding:1.2rem 2rem; gap:.6rem; background: rgb(136 136 136);">
+
+    <input required type="text" name="username" placeholder="Celular" class="mb-2" style="outline:none; font-weight:500; border:none; border-radius:12px; padding:.7rem; height:3rem;"> 
+    <input required type="password" name="password" class="mb-2" placeholder="CPF"  style="outline:none; font-weight:500; border:none; border-radius:12px; padding:.7rem; height:3rem;"> 
+    <button class="d-flex align-items-center enviar justify-content-center" style="width:6rem; border:none; outline:none; border-radius:4px; padding:1.6rem; height:2.3rem;background:#14c29f; color:#fff;" type="submit">Realizar saque </button>
+    <!-- <a  href="playlists.html" class="d-flex align-items-center justify-content-center" style="width:6rem; border-radius:4px; padding:.8rem; height:2.3rem;background:#14c29f; color:#fff;">Login</a> -->
+
+
+</div>
+<div class="d-flex justify-content-start align-items-center flex-column w-100">
+
+
+</div>
+
+    </div>
+
+</div>
+
+<div class="main-container align-items-center justify-content-center" style="background:rgba(0, 0, 0, 0.35);top:0; height: 100vh; width:100vw; position: fixed; display: none; ">
+
+    <div class="container d-flex justify-content-center">
+    <div class="d-flex flex-column p-4  align-items-center" style="width:30rem; max-width:100%; background: #fff; border-radius:12px;">
+
+        <img src="{%static 'img\close.png' %}" style="height: 4rem;">
+        <span class="mt-3 text-center">Saldo insuficiente para saque.</span>
+        <span class="mt-3 text-center" style="font-size:1rem">Você precisa ter no mínimo R$300,00 disponíveis para o saque.</span>
+      
+
+
+
+    </div>
+</div>
+
+</div>
+
+
+  
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<script>
+
+    cupom = document.querySelectorAll('.cupom');
+    
+    cupom.forEach((button)=> 
+    {
+        button.addEventListener('click', function()
+        {   
+            cupom.forEach(btn => btn.style.background = '#3b3b3b');
+            this.style.background = 'linear-gradient(to right, black, red)'
+
+
+        })
+    })
+        
+    
+    enviar = document.querySelector('.enviar');
+    mainContainer = document.querySelector('.main-container')
+
+    enviar.addEventListener('click', function()
+    {
+        mainContainer.style.display = 'flex';
+            // Função que será chamada quando a janela for carregada
+           
+});
+        </script>
+
+
+</body>
+
+
+
+
+</html>

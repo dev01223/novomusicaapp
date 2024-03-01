@@ -1,0 +1,207 @@
+<html>
+{%load static%}
+<head>
+    <meta charset="utf-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{%static 'css/saqueNovo.css' %}">
+
+
+
+</head>
+
+<body>
+
+    <style>
+
+    </style>
+<header class=" p-3" style=" width: 100%; background: rgb(20, 20, 20);  background:green;">
+
+<div class="d-flex justify-content-center" style="gap:1rem;">
+<div class="d-flex align-items-center" style="gap:.5rem">
+</div>
+<span class="d-flex align-items-center" style=" color:#fff;">Music Pay</span>
+</div>
+
+</header> 
+
+
+<div class="container mb-3 mt-3 ">
+    <div class="d-flex container p-3 flex-column justify-content-center align-items-center" style="max-width:30rem;  ">
+        <img style="height: 10rem;" src="{%static 'img\Untitled design.png' %}">
+
+<div class="container p-2 d-flex justify-content-center" style=" border-radius:12px;">
+    <span class="text-center" style="line-height:2;font-size: 1.8rem; font-weight: 700; color:#fff;"><strong>Seu saldo: </strong><br>
+   
+</span>
+
+
+</div>
+
+<div class=" d-flex justify-content-center align-items-center" style="gap:.5rem">
+ <span  style="color:#000; border-radius:12px; padding:.8rem 1.7rem; background:#e7e7e7; font-size:1.6rem;">R$ <span>{{ user.saldo|floatformat:2 }}</span>
+</span>   </div>
+
+ <span class="mt-4" style="color:#fff;"> Selecione o tipo de chave pix:</span>
+
+<div class="d-flex justify-content-center w-100" style="gap:1rem;">
+    <span class="mt-5 cupom" style="width:fit-content; border-radius:4px; padding:.4rem 1rem; font-size:1.2rem !important; background-color: #3b3b3b; color:#fff; ">CPF/CNPJ</span>
+
+    <span class="mt-5 cupom" style="width:fit-content; border-radius:4px; padding:.4rem 1rem; font-size:1.2rem !important; background-color: #3b3b3b; color:#fff;">Celular</span>
+    <span class="mt-5 cupom" style="width:fit-content; border-radius:4px; padding:.4rem 1rem; font-size:1.2rem !important; background-color: #3b3b3b; color:#fff;">E-mail</span>
+
+    
+    </div>
+    <input class="mt-4 p-2 w-100" style="color:#000 !important" placeholder="Inserir sua chave pix">
+    <input class="mt-4 p-2 w-100" style="color:#000 !important" placeholder="Valor de Retirada">
+
+
+<a  class="mt-4 p-2 enviar text-center" style="color:#fff;  width: 100%; border-radius:8px; font-size:1rem;">
+<img style="height:4rem;" src="{%static 'img/Untitled design (3) (1).png'%}"></a>
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+<div class="main-container align-items-center justify-content-center" style="background:rgba(0, 0, 0, 0.35);top:0; height: 100vh; width:100vw; position: fixed; display: none; ">
+
+    <div class="d-flex flex-column p-4  align-items-center notificacao" style="width:30rem; max-width:90%; background: #fff; border-radius:12px;">
+
+        <img style="height:5rem; max-width:100%;" src="{%static 'img/check (2).png' %}">
+        <span style="font-size:1.6rem;" class="mt-1">Saque Realizado!</span>
+        <span class="mt-3" style="font-size:1rem">Seu pagamento está sendo processado.</span>
+        <span class="mt-1" style="font-size:1rem;">O valor será enviado em breve</span>
+
+
+    </div>
+
+</div>
+
+<span class="mb-3 text-center" style="color:#fff !important; font-size:.9rem">©2023 Todos os seus direitos reservados.</span>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+    
+
+<div id="pixContainer1" class="  align-items-center p-3" style="position:absolute; top:.5rem; background:#1e1e1e; border-radius:12px; max-width:95%; gap:.5rem; display:none;  ">
+    <img style="height:2rem; border-radius:8px;" src="{%static 'img/nubank-logo-2.png' %}">
+<div>
+<p style=" color:#fff; margin-bottom:0 !important; font-size:1rem; line-height:1; 
+"></strong>Transferência recebida</strong></p>
+<p style=" position:absolute; top: .5rem; right:.5rem; right: 15px;color:#fff; font-size:.8rem; margin-bottom:.3rem !important; 
+">Agora</p>
+
+<p style=" color:#fff; font-weight:300; font-size:.9rem; font-size:1rem; margin-bottom:0 !important; 
+">Você recebeu uma transferência via pix de R${{ user.saldo|floatformat:2 }} da Nubank.</p>
+</div>
+</div>
+
+<div id="pixContainer2" class="  align-items-center p-3" style="position:absolute; top:.5rem; background:#1e1e1e; border-radius:12px; max-width:95%; gap:.5rem; display:none;  ">
+    <img style="height:2rem; border-radius:8px;" src="{%static 'img/nubank-logo-2.png' %}">
+    <div>
+    <p style=" color:#fff; margin-bottom:0 !important; font-size:1rem; line-height:1;"></strong>Transferência recebida</strong></p>
+    <p style=" position:absolute; top: .5rem; right:.5rem; right: 15px;color:#fff; font-size:.8rem; margin-bottom:.3rem !important;">Agora</p>
+    
+    <p style=" color:#fff; font-weight:300; font-size:.9rem; font-size:1rem; margin-bottom:0 !important;">Você recebeu uma transferência via pix de R${{ user.saldo|floatformat:2 }} do Itaú.</p>
+    </div>
+    </div>
+
+<div id="pixContainer3" class="  align-items-center p-3" style="position:absolute; top:.5rem; background:#1e1e1e; border-radius:12px; max-width:95%; gap:.5rem; display:none;  ">
+    <img style="height:2rem; border-radius:8px;" src="{%static 'img/images.png' %}">
+    <div>
+    <p style=" color:#fff; margin-bottom:0 !important; font-size:1rem; line-height:1;"></strong>Transferência recebida</strong></p>
+    <p style=" position:absolute; top: .5rem; right:.5rem; right: 15px;color:#fff; font-size:.8rem; margin-bottom:.3rem !important;">Agora</p>
+    
+    <p style=" color:#fff; font-weight:300; font-size:.9rem; font-size:1rem; margin-bottom:0 !important;">Você recebeu uma transferência via pix de R${{ user.saldo|floatformat:2 }} do Bradesco.</p>
+    </div>
+    </div>
+
+<script>
+    // Função para adicionar um zero à esquerda se o número for menor que 10
+    function padTo2Digits(num) {
+      return num.toString().padStart(2, '0');
+    }
+  
+    // Função para formatar a data no formato dd/mm/yyyy
+    function formatDate(date) {
+      return [
+        padTo2Digits(date.getDate()),
+        padTo2Digits(date.getMonth() + 1), // Adiciona 1 porque os meses começam do 0
+        date.getFullYear(),
+      ].join('/');
+    }
+  
+    // Usando as funções acima para obter a data atual formatada
+    document.getElementById('currentDate').textContent = formatDate(new Date());
+  </script>
+
+
+  <script>
+    notificacao1 = document.querySelector('#pixContainer1');
+    cupom = document.querySelectorAll('.cupom');
+    enviar = document.querySelector('.enviar');
+    mainContainer = document.querySelector('.main-container');
+
+    cupom.forEach((button) => {
+        button.addEventListener('click', function() {   
+            cupom.forEach(btn => btn.style.background = '#3b3b3b');
+            this.style.background = 'linear-gradient(to right, rgb(38, 176, 44), rgb(9, 61, 14))';
+        });
+    });
+
+    enviar.addEventListener('click', function() {
+        // Exibe mainContainer
+        mainContainer.style.display = 'flex';
+    
+        // Esconde mainContainer após 3 segundos
+        setTimeout(function() {
+            mainContainer.style.display = 'none';
+    
+            // Após esconder o mainContainer, espera 1,5 segundo para exibir uma notificação
+            setTimeout(function() {
+                // Sempre seleciona o pixContainer1
+                const notificacaoSelecionada = notificacao1;
+    
+                // Exibe a notificação selecionada
+                notificacaoSelecionada.style.display = 'flex';
+                notificacaoSelecionada.classList.add('slide-down-animation');
+    
+                // Aguarda algum tempo antes de esconder a notificação
+                setTimeout(function() {
+                    // Começa a esconder a notificação
+                    notificacaoSelecionada.style.display = 'none';
+                    notificacaoSelecionada.classList.remove('slide-down-animation');
+    
+                    location.href ='{%url 'sacar_saldo' %}';
+                }, 3000); // Tempo em que a notificação ficará visível
+    
+            }, 1500); // Tempo de espera após esconder mainContainer
+    
+        }, 3000); // Tempo em que mainContainer ficará visível
+    });
+
+    mainContainer.addEventListener('click', function(event) {   
+        event.stopPropagation();
+        if(event.target === mainContainer) {
+            mainContainer.style.display = 'none';
+        }
+    });
+</script>
+
+
+</body>
+
+
+
+
+</html>
