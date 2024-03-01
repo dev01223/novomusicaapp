@@ -38,8 +38,8 @@ DATABASES = {
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['musicaapp.onrender.com', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://musicaapp.onrender.com/*', 'http://127.0.0.1/*']
+ALLOWED_HOSTS = ['musicaapp.onrender.com', '127.0.0.1, musicpay-app.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://musicaapp.onrender.com/*', 'https://musicpay-app.onrender.com/*' 'http://127.0.0.1/*']
 
 
 AUTH_USER_MODEL = 'usuarios.CustomUser'
