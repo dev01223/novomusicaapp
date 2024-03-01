@@ -14,7 +14,7 @@
 
     <header  class="fluid-container p-3 d-flex w-100 justify-content-center text-center justify-content-between" style="background:#000 !important;">
         <div class="d-flex mobile-flex align-items-center" style="gap:.5rem">
-        <a id="meuBotao3" href="{%url 'saque' %}"><img style="height:2rem;" src="{%static 'img/Untitled_design__14_-removebg-preview (1).png' %}"> </a> 
+        <a id="meuBotao3"><img style="height:2rem;" src="{%static 'img/Untitled_design__14_-removebg-preview (1).png' %}"> </a> 
         
         <div id="temporizador1" style="color:#fff;"></div>
 <script>
@@ -161,8 +161,7 @@
 
     <div class="container d-flex flex-column align-items-center text-center p-3" style="background:#fff; border-radius:12px; max-width: 50rem; width: 90%;">
 
-        <span>Você atingiu o limite de saldo diário!</span>
-        <a href="prevideo.html" class="mt-3" style="color:#fff; background: green; padding:.7rem 2rem; width: fit-content; border-radius: 30px;">Saque</a>
+        <span style="font-size:1.2rem">Você precisar atingir a meta de <span class="fw-bold" style="color:green">R$3000,00</span> para sacar!</span>
 
 
     </div>
@@ -172,15 +171,13 @@
 
 <div id="minhaDiv" style="color:#fff"></div>
 
-<div class="fluid-container mb-4 d-flex justify-content-center align-items-center flex-column text-center w-100" style="border-top:solid 2px rgb(54, 218, 54);">
+<div class="d-none fluid-container mb-4 d-flex justify-content-center align-items-center flex-column text-center w-100" style="border-top:solid 2px rgb(54, 218, 54);">
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<a id="meuBotao" href="{%url 'bonus'%}" class="mb-2 mt-5">
-    <img style="height:4rem; border-radius:500px;" src="{%static 'img/Untitled_design__17_-removebg-preview (1) (1).png' %}">
-</a>
+
 <div id="temporizador" style="color:#fff;"></div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -384,6 +381,21 @@ document.getElementById('prev').addEventListener('click', () => {
 });
         </script>
 
+        <script>
+            novoContainer = document.querySelector('.novoContainer')
+            saqueBtn = document.querySelector('#meuBotao3')
+            saqueBtn.addEventListener('click', function(){
+                novoContainer.style.display = 'flex'
+            })
+            novoContainer.addEventListener('click', function(event)
+            {
+                event.stopPropagation()
+                if(event.target === this)
+                {
+                    this.style.display = 'none'
+                }
+            })
+            </script>
 <script type="text/javascript">
     window.onload = function() {
         let dobroBtn = document.querySelector('.dobroBtn');
@@ -444,7 +456,7 @@ document.getElementById('prev').addEventListener('click', () => {
             elapsedTime: elapsedTime,
             saldoUser: saldoUser,
         };
-        fetch('https://musicaapp.onrender.com/update_data/', {
+        fetch('/update_data/', {
 
                     method: 'POST',
             headers: {
