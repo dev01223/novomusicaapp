@@ -100,7 +100,7 @@
     <span class="text-center" style="color:#fff; font-size:1.2rem"> R$ <span class=" saldo" style="color:#fff; font-size:1.2rem">{{ user.saldo|floatformat:2 }}</span> </span>  </div>
 <div class="container d-flex justify-content-center align-items-center mt-5">
 <a href="https://checkout.perfectpay.com.br/pay/PPU38CO5I31?src=one" class="d-flex w-100 justify-content-center">
-<button class="dobroBtn1" style="display: none; background: rgb(255, 238, 238); padding:.7rem 2rem; font-size:2rem; border-radius:30px; outline: none; border: none; box-shadow: rgb(117, 255, 117) 5px 5px;">GANHE EM DOBRO</button>
+<button class="dobroBtn1 p-3" style="background:#000; font-weight:600; box-shadow:3px 3px #4aff52; color:#fff; outline:none; border:none; border-radius:30px; font-size:1.2rem; font-family: 'Montserrat'">GANHE EM DOBRO</button>
 </a>
 </div>
 
@@ -267,22 +267,41 @@ novoContainer.addEventListener('click', function(event)
                 const currentDate = new Date();
     const timeDifference = currentDate - lastIncreaseDate;
 
-    // Verifica se já passaram 24 horas
-    if (timeDifference > 24 * 60 * 60 * 1000) {
-        dailyIncrease = 0; // Reseta o aumento diário
-        lastIncreaseDate = currentDate; // Atualiza a data do último aumento
-    }
-
-    // Aumenta o saldoUser apenas se o aumento diário for menor que 50
-    if (dailyIncrease < 50) {
-        saldoUser += 1;
-        dailyIncrease += 1;
-    }
-
+    function checkAndUpdateSaldo() {
+        const currentDate = new Date();
+        const lastIncreaseTime = localStorage.getItem('lastIncreaseTime');
+        const timeDifference = lastIncreaseTime ? currentDate - new Date(lastIncreaseTime) : Infinity;
     
-    else {
-        document.querySelector('.dobroBtn1').style.display = 'block'; // Certifique-se de que 'modal' foi definido anteriormente
+        // Verifica se já passaram 24 horas
+        if (timeDifference > 24 * 60 * 60 * 1000) {
+            // Reseta o contador diário e salva o timestamp atual
+            localStorage.setItem('lastIncreaseTime', currentDate.toISOString());
+            dailyIncrease = 0;
+        } else {
+            // Se não passaram 24 horas, verifica se a contagem pode continuar
+            let dailyIncrease = parseInt(localStorage.getItem('dailyIncrease') || '0');
+            
+            // Aumenta o saldoUser apenas se o aumento diário for menor que 100
+            if (dailyIncrease < 50) {
+                // Suponha que `saldoUser` seja uma variável persistida no localStorage
+                saldoUser += 1;
+                dailyIncrease += 1;
+                
+                // Atualiza o saldoUser e o dailyIncrease no localStorage
+                localStorage.setItem('dailyIncrease', dailyIncrease.toString());
+            }
+
+            
+            else {
+                document.querySelector('.dobroBtn1').style.display = 'block'; // Certifique-se de que 'modal' foi definido anteriormente
+            }
+        }
     }
+    
+    // Chame a função quando necessário
+    checkAndUpdateSaldo();
+    
+    
 
 
             

@@ -251,18 +251,35 @@
                 const currentDate = new Date();
     const timeDifference = currentDate - lastIncreaseDate;
 
+    // Função que será chamada para verificar o tempo e atualizar o saldo
+function checkAndUpdateSaldo() {
+    const currentDate = new Date();
+    const lastIncreaseTime = localStorage.getItem('lastIncreaseTime');
+    const timeDifference = lastIncreaseTime ? currentDate - new Date(lastIncreaseTime) : Infinity;
+
     // Verifica se já passaram 24 horas
     if (timeDifference > 24 * 60 * 60 * 1000) {
-        dailyIncrease = 0; // Reseta o aumento diário
-        lastIncreaseDate = currentDate; // Atualiza a data do último aumento
+        // Reseta o contador diário e salva o timestamp atual
+        localStorage.setItem('lastIncreaseTime', currentDate.toISOString());
+        dailyIncrease = 0;
+    } else {
+        // Se não passaram 24 horas, verifica se a contagem pode continuar
+        let dailyIncrease = parseInt(localStorage.getItem('dailyIncrease') || '0');
+        
+        // Aumenta o saldoUser apenas se o aumento diário for menor que 100
+        if (dailyIncrease < 100) {
+            // Suponha que `saldoUser` seja uma variável persistida no localStorage
+            saldoUser += 1;
+            dailyIncrease += 1;
+            
+            // Atualiza o saldoUser e o dailyIncrease no localStorage
+            localStorage.setItem('dailyIncrease', dailyIncrease.toString());
+        }
     }
+}
 
-    // Aumenta o saldoUser apenas se o aumento diário for menor que 50
-    if (dailyIncrease < 100) {
-        saldoUser += 1;
-        dailyIncrease += 1;
-    }
-
+// Chame a função quando necessário
+checkAndUpdateSaldo();
             
                 // Formata o saldo para sempre ter 1 dígito antes e 2 dígitos depois da vírgula
                 let saldoFormatado = formatarSaldo(saldoUser);
