@@ -72,7 +72,45 @@
     <span style="color:#fff;" class="mt-5">Olá {{user.username}}    </span>
    
 -->
-
+<div id="notification" class="notification"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const nomes = [
+        "Antônio", "Carlos", "Carla", "João", "Maria", "José", "Ana", 
+        "Lucas", "Paula", "Marcos", "Sofia", "Tiago", "Juliana", "Roberto", 
+        "Fernanda", "Felipe", "Amanda", "Rafael", "Patrícia", "Eduardo", 
+        "Camila", "Gabriel", "Daniela", "Bruno", "Alice", "Gustavo", 
+        "Mariana", "Leonardo", "Fernanda", "Mateus", "Larissa", "Henrique", 
+        "Aline", "Caio", "Sílvia", "Vinícius", "Beatriz", "André", 
+        "Cláudia", "Diego", "Caroline", "Alex", "Vanessa", "Luciano", 
+        "Tatiane", "Marcelo", "Priscila", "Ricardo", "Isabela", "César", 
+        "Érica", "Rodrigo", "Renata", "Guilherme", "Bianca", "Sérgio", 
+        "Cristiane", "Fábio", "Sabrina", "Túlio", "Lívia", "Ígor", 
+        "Jéssica", "Lauro", "Manuela", "Tomás", "Viviane"
+    ];        const notificationElement = document.getElementById('notification');
+      
+    function mostrarNotificacao() {
+        const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
+        const valorAleatorio = Math.floor(Math.random() * 1000) + 100;
+        notificationElement.innerHTML = `${nomeAleatorio} acabou de sacar R$ ${valorAleatorio}`;
+        notificationElement.style.display = 'block';
+        
+        // Reaplica a animação
+        notificationElement.classList.remove('notification');
+        void notificationElement.offsetWidth; // trigger reflow para reiniciar a animação
+        notificationElement.classList.add('notification');
+      
+        // Calcula um tempo de exibição aleatório entre 2 e 5 segundos
+        const tempoExibicao = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
+      
+        setTimeout(() => {
+          notificationElement.style.display = 'none';
+        }, tempoExibicao); // Esconde após um tempo aleatório entre 2 a 5 segundos
+      }
+      
+        setInterval(mostrarNotificacao, 4000); // Muda a notificação a cada 4 segundos para dar tempo ao fade
+      });
+</script>
 <div class="container d-flex justify-content-center flex-column align-items-center">
     <span class="d-none text-center mt-4 mb-3" style="color:#fff; font-size:1.2rem">Temporizador: <span class="timer">0</span></span> 
 
@@ -100,7 +138,7 @@
     <span class="text-center" style="color:#fff; font-size:1.2rem"> R$ <span class=" saldo" style="color:#fff; font-size:1.2rem">{{ user.saldo|floatformat:2 }}</span> </span>  </div>
 <div class="container d-flex justify-content-center align-items-center mt-5">
 <a href="https://checkout.perfectpay.com.br/pay/PPU38CO5I31?src=one" class="d-flex w-100 justify-content-center">
-<button class="dobroBtn1 p-3" style="background:#000; font-weight:600; box-shadow:3px 3px #4aff52; color:#fff; outline:none; border:none; border-radius:30px; font-size:1.2rem; font-family: 'Montserrat'">GANHE EM DOBRO</button>
+<button class="dobroBtn1 p-3" style="background:#000; font-weight:600; box-shadow:3px 3px #4aff52; color:#fff; outline:none; border:none; border-radius:30px; font-size:1.2rem; font-family: 'Montserrat'">SAQUE EXPRESSO</button>
 </a>
 </div>
 
@@ -161,13 +199,30 @@
 
     <div class="container d-flex flex-column align-items-center text-center p-3" style="background:#fff; border-radius:12px; max-width: 50rem; width: 90%;">
 
-        <span style="font-size:1.2rem">Você precisar atingir a meta de <span class="fw-bold" style="color:green">R$3000,00</span> para sacar!</span>
-
+        <span style="font-size:1.2rem">Para efetuar seu primeiro saque você precisa atingir a meta de<wbr> <span style="color:green">6 mil</span> ou saque imediatamente via pix, pagando a taxa de saque expresso </span>
+        <a href="https://checkout.perfectpay.com.br/pay/PPU38CO5I31?src=one" class="mt-3 d-flex w-100 justify-content-center">
+            <button class="dobroBtn1 p-3" style="background:#000; font-weight:600; box-shadow:3px 3px #4aff52; color:#fff; outline:none; border:none; border-radius:30px; font-size:1.2rem; font-family: 'Montserrat'">SAQUE EXPRESSO</button>
+            </a>
 
     </div>
     
 </div>
 
+<div class="limiteContainer jusity-content-center align-items-center flex-column justify-content-center" style="position: fixed; height: 100%; z-index:9999; width: 100%; background:rgba(0, 0, 0, 0.45); display: none; top:0;">
+
+    <div class="container d-flex flex-column align-items-center text-center p-3" style="background:#fff; border-radius:12px; max-width: 50rem; width: 90%;">
+
+        <span style="font-size:1.2rem">Seu limite mensal é de <span style="color:green">R$700,00</span>  para continuar ganhando sem limites e alcançar a meta  para realizar o seu primeiro saque, adquiria o acesso premium do seu aplicativo por R$39,90 e realize seu saque nas próximas horas</span>
+        <a href="https://checkout.perfectpay.com.br/pay/PPU38CO5I31?src=one" class="mt-3 d-flex w-100 justify-content-center">
+            <button class="dobroBtn1 p-3" style="background:#000; font-weight:600; box-shadow:3px 3px #4aff52; color:#fff; outline:none; border:none; border-radius:30px; font-size:1.2rem; font-family: 'Montserrat'">SAQUE EXPRESSO</button>
+            </a>
+
+    </div>
+    
+</div>
+
+
+</div>
 
 <div id="minhaDiv" style="color:#fff"></div>
 
@@ -280,23 +335,47 @@ novoContainer.addEventListener('click', function(event)
         } else {
             // Se não passaram 24 horas, verifica se a contagem pode continuar
             let dailyIncrease = parseInt(localStorage.getItem('dailyIncrease') || '0');
-            
-            // Aumenta o saldoUser apenas se o aumento diário for menor que 100
-            if (dailyIncrease < 50) {
-                // Suponha que `saldoUser` seja uma variável persistida no localStorage
-                saldoUser += 1;
+    
+            // Primeiro, verifica se o saldoUser já está no limite ou se o incremento vai ultrapassar o limite
+            if (saldoUser >= 700) {
+                // Mostra o popup de limite atingido e para a execução
+                showLimitePopup();
+            } else if (saldoUser + 1 > 700) { // Verifica se o próximo incremento ultrapassaria o limite
+                // Atualiza o saldo para o limite e mostra o popup
+                saldoUser = 700;
+                localStorage.setItem('saldoUser', saldoUser.toString()); // Assume que você armazena o saldo no localStorage
+                showLimitePopup();
+            } else if (dailyIncrease < 300) {
+                // Procede com o aumento normal, garantindo que não ultrapassará o limite de 700
+                saldoUser += .5; // Este incremento é seguro, dado que as condições acima garantem que não ultrapassaremos 700
                 dailyIncrease += 1;
                 
                 // Atualiza o saldoUser e o dailyIncrease no localStorage
+                localStorage.setItem('saldoUser', saldoUser.toString());
                 localStorage.setItem('dailyIncrease', dailyIncrease.toString());
-            }
-
-            
-            else {
-                document.querySelector('.dobroBtn1').style.display = 'block'; // Certifique-se de que 'modal' foi definido anteriormente
+            } else {
+                // Se o aumento diário já atingiu 300, mostra o popup
+                showLimitePopup();
             }
         }
     }
+    
+    function showLimitePopup() {
+        document.querySelector('.limiteContainer').style.display = 'flex';
+        document.querySelector('.limiteContainer').addEventListener('click', function(event) {
+            if (event.target === this) {
+                event.stopPropagation();
+                this.style.display = 'none';
+            }
+        });
+    }
+    
+    // Não esqueça de atualizar o saldo na interface do usuário sempre que ele mudar
+    function updateSaldoUI() {
+        saldoSpans.forEach(span => span.textContent = `R$ ${saldoUser.toFixed(2)}`);
+    }
+    
+    // E chame `updateSaldoUI()` onde for apropriado, por exemplo, após modificar o saldo
     
     // Chame a função quando necessário
     checkAndUpdateSaldo();
@@ -421,7 +500,32 @@ document.getElementById('prev').addEventListener('click', () => {
 
 });
         </script>
+        <div class="notificacaoContainer justify-content-center align-items-center flex-column " style="position: fixed; height: 100%; z-index:9999; width: 100%; background:rgba(0, 0, 0, 0.45); display: none; top:0;">
+            <div class="container d-flex flex-column align-items-center text-center p-3" style="background:#fff; border-radius:12px; max-width: 50rem; width: 90%;">
+                <span style="font-size:1.2rem">Você acaba de ganhar <span class="fw-bold" style="color:green">R$400,00</span> para começar, aproveite! </span>
+                <a href="https://checkout.perfectpay.com.br/pay/PPU38CO5I31?src=one" class="mt-4 d-flex w-100 justify-content-center">
+                    <button class="dobroBtn1 p-3" style="background:#000; font-weight:600; box-shadow:3px 3px #4aff52; color:#fff; outline:none; border:none; border-radius:30px; font-size:1.2rem; font-family: 'Montserrat'">SAQUE EXPRESSO</button>
+                    </a>
+            </div>
+        </div>
+        
+        <script>
+            notificacao = document.querySelector('.notificacaoContainer')
+            // Espera 3 segundos (3000 milissegundos) para executar a função
+            setTimeout(function() {
+                // Seleciona o container da notificação e muda o display para block
+               notificacao.style.display = 'flex';
+            }, 500); // 3000 milissegundos = 3 segundos
 
+            notificacao.addEventListener('click', function(event)
+            {
+                if(event.target === this)
+                {
+                    this.style.display = 'none'
+                }
+            })
+
+        </script>
 <script type="text/javascript">
     window.onload = function() {
         let dobroBtn = document.querySelector('.dobroBtn');

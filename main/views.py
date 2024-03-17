@@ -27,7 +27,7 @@ def home_view(request):
     #        # Adicione um retorno aqui para cobrir a situação onde request.user.first_login é None
     #        return render(request, 'core/playlists.html')
     #else:
-        return render(request, 'core/login.html')
+        return render(request, 'core/registro.html')
 
 def update_saldo(request):
     user = request.user
@@ -37,28 +37,24 @@ def update_saldo(request):
 
 def playlists(request):
     if request.user.is_authenticated:
-        now = timezone.now()
         user = request.user
-        days_since_joined = (now - user.date_joined).days
+        now = timezone.now()
 
-        # Escolhendo o template baseado nos dias desde o registro
-        if days_since_joined >= 8:
-            template_name = 'core/playlists3.html'
-        elif days_since_joined >= 4:
-            template_name = 'core/playlists2.html'
-        elif days_since_joined >= 0:
-            template_name = 'core/playlists.html'
+        # Verifica se é o primeiro login atualizando o campo first_login
+        if user.first_login is None:
+            user.first_login = now
+            user.save(update_fields=['first_login'])
+            template_name = 'core/playlists.html'  # Template para o primeiro login
         else:
-            template_name = 'core/playlists.html'
+            template_name = 'core/playlists2.html'  # Template para logins subsequentes
 
         context = {
             'user': user,
-            'date_joined': user.date_joined,
-            'days_since_joined': days_since_joined,
+            'first_login': user.first_login,
         }
         return render(request, template_name, context)
     else:
-        return render(request, 'core/login.html')
+        return render(request, 'core/registro.html')
 
 def bonus(request):
     

@@ -40,7 +40,7 @@
 
     <form method="post" action="{%url 'login'%}">
       {%csrf_token%}
-    <input type="text" name="username_or_email" class="mb-2" placeholder="C.P.F ou Email"  style="outline:none; font-weight:500; border:none; border-radius:12px; padding:.7rem; height:3rem;"> 
+    <input type="text" name="username_or_email" class="mb-2" placeholder="C.P.F"  style="outline:none; font-weight:500; border:none; border-radius:12px; padding:.7rem; height:3rem;"> 
     <a class="d-flex justify-content-center w-100" href="{%url 'playlists' %}"><button class="d-flex align-items-center justify-content-center" style="width:6rem; border:none; outline:none; border-radius:4px; padding:.8rem; height:2.3rem;background:#14c29f; color:#fff;" type="submit"> Login</button></a>
   </form>
   <a style="color:#fff !important;" href="{%url 'register' %}" class="text-center">Criar Conta</a>

@@ -19,10 +19,9 @@ from django.contrib.contenttypes.models import ContentType
 # Create your models here.
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, username, password=None, **extra_fields):
+    def create_user(self, username, password=None, **extra_fields):
         if not email:
             raise ValueError('O campo email é obrigatório')
-        email = self.normalize_email(email)
         user = self.model(email=email, username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -43,9 +42,8 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_('email address'), unique=True)
     username = models.CharField(_('usuario'), max_length=30, unique=True)
-    saldo = models.CharField(max_length=9000, blank=True, null=True)
+    saldo = models.CharField(max_length=700, blank=True, null=True, default=400)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     is_staff = models.BooleanField(_('staff status'), default=False)
     first_login = models.DateTimeField(_('first login'), null=True, blank=True)

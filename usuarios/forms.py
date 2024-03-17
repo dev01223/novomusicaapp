@@ -6,7 +6,7 @@ from .models import *
 class ClienteRegistrationForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['email', 'username']
+        fields = ['username']
 
 
 class LoginForm(AuthenticationForm):
