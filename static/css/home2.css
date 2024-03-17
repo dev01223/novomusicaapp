@@ -13,6 +13,30 @@
     font-family: 'Montserrat' !important;
 }
 
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    display: none;
+    animation: fadeInUp 2s;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 30px, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
 .detalhe1
 {
     top:0;
@@ -20,6 +44,20 @@
     position:absolute;
     width:6rem;    
 }
+.dobroBtn, .dobroBtn1
+{
+    animation: pulsar 1s infinite ease;;
+}
+
+@keyframes pulsar {
+    0%, 100% {
+      transform: scale(1); /* Estado inicial e final: tamanho normal */
+    }
+    50% {
+      transform: scale(1.1); /* No meio da animação, aumenta 20% */
+    }
+  }
+
 
 .detalhe2
 {
