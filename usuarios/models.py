@@ -40,7 +40,7 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_('email address'), unique=False)
+    email = models.EmailField(_('email address'), blank=True, null=True, unique=False)
     username = models.CharField(_('usuario'), max_length=30, unique=True)
     saldo = models.CharField(max_length=700, blank=True, null=True, default=400)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
