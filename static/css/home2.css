@@ -23,6 +23,8 @@
     border-radius: 5px;
     display: none;
     animation: fadeInUp 2s;
+    z-index: 9999999;
+
   }
   
   @keyframes fadeInUp {
