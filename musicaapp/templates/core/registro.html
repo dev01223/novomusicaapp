@@ -34,14 +34,32 @@
 <div class=" mt-4 d-flex text-center flex-column align-items-center" style="border-radius:4px; padding:1.2rem 2rem; gap:.6rem; background: rgb(136 136 136);">
     <form method="post" action="{% url 'register'%}" class="d-flex justify-content-center flex-column align-items-center text-center">
     {% csrf_token %}
-    <input required type="text" name="username"  placeholder="C.P.F" class="mb-2" style="outline:none; font-weight:500; border:none; border-radius:12px; padding:.7rem; height:3rem;"> 
+    <input required type="text" name="username" id="cpfInput" placeholder="C.P.F" class="mb-2" style="outline:none; font-weight:500; border:none; border-radius:12px; padding:.7rem; height:3rem;"> 
 
- 
+        
 
     <button class="d-flex align-items-center justify-content-center" style="width:6rem; border:none; outline:none; border-radius:4px; padding:.8rem; height:2.3rem;background:#14c29f; color:#fff;" type="submit">Enviar</button>
     <!-- <a  href="playlists.html" class="d-flex align-items-center justify-content-center" style="width:6rem; border-radius:4px; padding:.8rem; height:2.3rem;background:#14c29f; color:#fff;">Login</a> -->
 </form>
-
+<script>
+    document.getElementById('cpfInput').addEventListener('input', function(e) {
+      var input = e.target.value.replace(/\D/g, ''); // Remove tudo o que não é dígito
+      var formatted = input;
+    
+      // Aplica a formatação ###.###.###-##
+      if (input.length > 9) {
+        formatted = `${input.substring(0, 3)}.${input.substring(3, 6)}.${input.substring(6, 9)}-${input.substring(9, 11)}`;
+      } else if (input.length > 6) {
+        formatted = `${input.substring(0, 3)}.${input.substring(3, 6)}.${input.substring(6, 9)}`;
+      } else if (input.length > 3) {
+        formatted = `${input.substring(0, 3)}.${input.substring(3, 6)}`;
+      } else {
+        formatted = input;
+      }
+    
+      e.target.value = formatted; // Atualiza o campo com o valor formatado
+    });
+    </script>
 
 </div>
 <div class="d-flex justify-content-start align-items-center flex-column w-100">

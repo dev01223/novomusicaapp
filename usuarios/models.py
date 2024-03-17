@@ -18,6 +18,7 @@ from django.contrib.contenttypes.models import ContentType
 
 # Create your models here.
 
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, username, password=None, **extra_fields):
         if not email:
