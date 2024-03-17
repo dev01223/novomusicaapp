@@ -28,12 +28,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-(n502r6f4$!e*_v*22lnj_#d4qzd2=@&h)9gru)m=hvofog^@l'
 
-DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': BASE_DIR / 'db.sqlite3',
-     }
- }
+#DATABASES = {
+#     'default': {
+ #        'ENGINE': 'django.db.backends.sqlite3',
+ #        'NAME': BASE_DIR / 'db.sqlite3',
+ #    }
+ #}
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -98,9 +98,9 @@ TEMPLATES = [
 ]
 WSGI_APPLICATION = 'musicaapp.wsgi.application'
 
-#DATABASES  = {
-#    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-#}
+DATABASES  = {
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 
 # Password validation
