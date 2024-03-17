@@ -18,33 +18,31 @@ from django.contrib.contenttypes.models import ContentType
 
 # Create your models here.
 
-
 class CustomUserManager(BaseUserManager):
-    def create_user(self, username, password=None, **extra_fields):
-        if not email:
-            raise ValueError('O campo email é obrigatório')
-        user = self.model(email=email, username=username, **extra_fields)
+    def create_user(self, username, email=None, password=None, **extra_fields):
+        # Não é mais necessário exigir um email para criar um usuário comum
+        if email:
+            email = self.normalize_email(email)
+            user = self.model(email=email, username=username, **extra_fields)
+        else:
+            user = self.model(username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, username, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser must have is_staff=True.')
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError('Superuser must have is_superuser=True.')
-
-        return self.create_user(email, username, password, **extra_fields)
+    def create_superuser(self, username, email, password=None, **extra_fields):
+        # Superusuários ainda exigirão um email
+        if not email:
+            raise ValueError(_('Superuser must have an email.'))
+        return self.create_user(username, email, password, **extra_fields, is_staff=True, is_superuser=True)
 
 
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(_('email address'), unique=True)
     username = models.CharField(_('usuario'), max_length=30, unique=True)
-    saldo = models.CharField(max_length=700, blank=True, null=True, default=400)
+    saldo = models.CharField(max_length=9000, blank=True, null=True)
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
     is_staff = models.BooleanField(_('staff status'), default=False)
     first_login = models.DateTimeField(_('first login'), null=True, blank=True)
@@ -52,11 +50,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     largura_barra = models.IntegerField(default=0)
 
 
+
     
     objects = CustomUserManager()
     
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = []
     
     class Meta:
         verbose_name = _('user')
