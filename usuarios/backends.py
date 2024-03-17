@@ -12,3 +12,28 @@ class EmailAuthenticationBackend(ModelBackend):
             return None
         except MultipleObjectsReturned:
             return None
+
+
+from django.contrib.auth.backends import BaseBackend
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
+
+class CPFBackend(BaseBackend):
+    def authenticate(self, request, username=None, **kwargs):
+        UserModel = get_user_model()
+        if not username:
+            return None
+        try:
+            user = UserModel.objects.get(username=username)
+            # Aqui, assumimos que o usuário é válido apenas com o CPF
+            # Como não há senha, retornamos o usuário diretamente
+            return user
+        except UserModel.DoesNotExist:
+            return None
+
+    def get_user(self, user_id):
+        UserModel = get_user_model()
+        try:
+            return UserModel.objects.get(pk=user_id)
+        except UserModel.DoesNotExist:
+            return None

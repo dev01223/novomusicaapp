@@ -54,7 +54,7 @@ def playlists(request):
         }
         return render(request, template_name, context)
     else:
-        return render(request, 'core/registro.html')
+        return render(request, 'core/playlists2.html')
 
 def bonus(request):
     

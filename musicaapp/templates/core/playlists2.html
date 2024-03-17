@@ -87,8 +87,7 @@
         "Érica", "Rodrigo", "Renata", "Guilherme", "Bianca", "Sérgio", 
         "Cristiane", "Fábio", "Sabrina", "Túlio", "Lívia", "Ígor", 
         "Jéssica", "Lauro", "Manuela", "Tomás", "Viviane"
-    ]; 
-        const notificationElement = document.getElementById('notification');
+    ];        const notificationElement = document.getElementById('notification');
       
         function mostrarNotificacao() {
           const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
@@ -110,7 +109,7 @@
       });
 </script>
 <div class="container d-flex justify-content-center flex-column align-items-center">
-    <span class="d-flex text-center mt-4 mb-3" style="color:#fff; font-size:1.2rem">Temporizador: <span class="timer">0</span></span> 
+    <span class="d-none text-center mt-4 mb-3" style="color:#fff; font-size:1.2rem">Temporizador: <span class="timer">0</span></span> 
 
 
     <span class="text-center mt-5 mb-5" style="color:#fff; font-size:1rem">Ouça para aumentar seu saldo!</span> 
@@ -205,7 +204,6 @@
     </div>
     
 </div>
-
 
 <div class="limiteContainer jusity-content-center align-items-center flex-column justify-content-center" style="position: fixed; height: 100%; z-index:9999; width: 100%; background:rgba(0, 0, 0, 0.45); display: none; top:0;">
 
@@ -502,7 +500,7 @@ document.getElementById('prev').addEventListener('click', () => {
         <div class="notificacaoContainer justify-content-center align-items-center flex-column " style="position: fixed; height: 100%; z-index:9999; width: 100%; background:rgba(0, 0, 0, 0.45); display: none; top:0;">
             <div class="container d-flex flex-column align-items-center text-center p-3" style="background:#fff; border-radius:12px; max-width: 50rem; width: 90%;">
                 <span style="font-size:1.2rem">Você acaba de ganhar <span class="fw-bold" style="color:green">R$400,00</span> para começar, aproveite! </span>
-                
+               
             </div>
         </div>
         
