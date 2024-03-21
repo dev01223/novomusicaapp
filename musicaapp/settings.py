@@ -28,18 +28,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-(n502r6f4$!e*_v*22lnj_#d4qzd2=@&h)9gru)m=hvofog^@l'
 
-#DATABASES = {
-#     'default': {
- #        'ENGINE': 'django.db.backends.sqlite3',
- #        'NAME': BASE_DIR / 'db.sqlite3',
- #    }
- #}
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+     }
+ }
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['musicaapp.onrender.com', '127.0.0.1', 'musicpay-app.onrender.com']
-CSRF_TRUSTED_ORIGINS = ['https://musicaapp.onrender.com/*', 'https://musicpay-app.onrender.com/*' 'http://127.0.0.1/*']
+ALLOWED_HOSTS = ['musicaapp.onrender.com', '127.0.0.1', 'musicpay-app.onrender.com', 'musicapp-owws.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://musicaapp.onrender.com/*', 'https://musicpay-app.onrender.com/*' 'http://127.0.0.1/*', 'https://musicapp-owws.onrender.com/*']
 
 
 AUTH_USER_MODEL = 'usuarios.CustomUser'
@@ -98,9 +98,9 @@ TEMPLATES = [
 ]
 WSGI_APPLICATION = 'musicaapp.wsgi.application'
 
-DATABASES  = {
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+#DATABASES  = {
+#    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+#}
 
 
 # Password validation

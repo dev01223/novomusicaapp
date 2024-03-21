@@ -45,6 +45,7 @@
     left:0;
     position:absolute;
     width:6rem;    
+    height: auto;
 }
 .dobroBtn, .dobroBtn1
 {
@@ -68,6 +69,7 @@
     position:absolute;
     display: none;
     width:6rem;
+    height: auto !important;
 }
 
 img
@@ -96,6 +98,7 @@ img
     right:0;
     position:absolute;
     height:12rem;
+    width: auto;
     z-index: 1;
 }
 
